@@ -4,7 +4,9 @@ from github import Github
 app = Flask(__name__)
 
 # توکن شخصی یا دسترسی read-only خود را وارد کنید
-g = Github("YOUR_GITHUB_TOKEN")
+#g= Github("YOUR_GITHUB_TOKEN")
+import os
+g = Github(os.environ.get("GITHUB_TOKEN"))
 
 @app.route('/')
 def index():
@@ -93,6 +95,7 @@ def main():
 if __name__ == "main":
 
     main()
+
 
 
 
