@@ -4,7 +4,8 @@ import pandas as pd
 #Load data from Excel file with multiple sheets
 @st.cache_data
 def load_data(file_path):
-    xls = pd.ExcelFile("C:/Users/davood_shahbakhti/Downloads/Projects Status/ProjectsStatus.xls")
+    #xls = pd.ExcelFile("C:/Users/davood_shahbakhti/Downloads/Projects Status/ProjectsStatus.xls")
+    xls = pd.ExcelFile("Projects_status.xlsx")
     projects = pd.read_excel(xls, 'Projects')
     wbs = pd.read_excel(xls, 'WBS')
     activities = pd.read_excel(xls, 'Activities')
@@ -71,4 +72,5 @@ def main():
     st.header("نصب")
     st.dataframe(installation[['کد تجهیز', 'کد پروژه', 'مکان نصب', 'تاریخ نصب', 'درصد پیشرفت', 'وضعیت', 'توضیحات']])
 if __name__ == "main":
+
     main()
