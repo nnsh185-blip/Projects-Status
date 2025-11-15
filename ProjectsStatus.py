@@ -1,8 +1,25 @@
-import streamlit as st
-import pandas as pd
+from flask import Flask, render_template
+from github import Github
 
+app = Flask(__name__)
+
+# توکن شخصی یا دسترسی read-only خود را وارد کنید
+g = Github("YOUR_GITHUB_TOKEN")
+
+@app.route('/')
+def index():
+    repo = g.get_repo("nnsh185-blip/Projects-Status")
+    # مثلاً واکشی issues یا readme پروژه
+    issues = repo.get_issues(state='open')
+    return render_template('index.html', issues=issues)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+#import streamlit as st
+#import pandas as pd
 #Load data from Excel file with multiple sheets
-@st.cache_data
+#@st.cache_data
 def load_data(file_path):
 #xls = pd.ExcelFile("C:/Users/davood_shahbakhti/Downloads/Projects Status/ProjectsStatus.xls")
     file_path = "ProjectsStatus.xlsx"
@@ -76,6 +93,7 @@ def main():
 if __name__ == "main":
 
     main()
+
 
 
 
