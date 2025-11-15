@@ -5,8 +5,8 @@ import pandas as pd
 @st.cache_data
 def load_data(file_path):
 #xls = pd.ExcelFile("C:/Users/davood_shahbakhti/Downloads/Projects Status/ProjectsStatus.xls")
-    file_path = "ProjectsStatus.xls"
-    xls = pd.ExcelFile("ProjectsStatus.xls")
+    file_path = "ProjectsStatus.xlsx"
+    xls = pd.ExcelFile("ProjectsStatus.xlsx")
     projects = pd.read_excel(xls, 'Projects')
     wbs = pd.read_excel(xls, 'WBS')
     activities = pd.read_excel(xls, 'Activities')
@@ -75,6 +75,7 @@ def main():
 if __name__ == "main":
 
     main()
+
 
 
 
